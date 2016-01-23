@@ -15,6 +15,9 @@ public class OI {
 	public static Joystick controllerOne = new Joystick(0);
 	public static JoystickButton shiftUp = new JoystickButton(controllerOne, 6);
 	public static JoystickButton shiftDown = new JoystickButton(controllerOne,5);
+	public static JoystickButton testUp = new JoystickButton(controllerOne,4);
+	public static JoystickButton testDown = new JoystickButton(controllerOne,2);
+	
 	
 	
 	// mapping of buttons for autonomous chooser

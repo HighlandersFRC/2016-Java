@@ -29,6 +29,12 @@ public class RobotMap {
 	public static DCMotor motorRightOne = new DCMotor(3);
 	public static DCMotor motorRightTwo = new DCMotor(4);
 	
+	public static DCMotor testMotorOne = new DCMotor(5);
+	
+	public static Servo cameraYaw = new Servo(2); // for some reason pins 0, 1 won't work they crash the code
+	public static Servo cameraPitch = new Servo(3);
+	
+	
 	//Servo Motors for Camera Gimbal
 	//public static Servo cameraYaw = new Servo(2); // for some reason pins 0, 1 won't work they crash the code
 	//public static Servo cameraPitch = new Servo(3);

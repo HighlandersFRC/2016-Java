@@ -18,7 +18,10 @@ import org.usfirst.frc.team4499.robot.tools.Tegra;
 public class Robot extends IterativeRobot {
 	TankDrive drive;
 	Camera camera;
-	int print = 0; 
+	int print = 0;
+	Tegra tegra;
+	AutoTarget targeting;
+	AutoGimbal trackCamera;
 	
 	
 	
@@ -34,7 +37,16 @@ public class Robot extends IterativeRobot {
 				RobotMap.motorRightTwo, 
 				RobotMap.motorRightOne,
 				RobotMap.shifters);
-        camera = new Camera(50, "cam0");
+       // camera = new Camera(50, "cam0");
+        trackCamera = new AutoGimbal();
+        targeting = new AutoTarget(trackCamera);
+        try {
+			tegra = new Tegra();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        
     }
     
     /**
@@ -76,6 +88,9 @@ public class Robot extends IterativeRobot {
     public void teleopInit(){
     	System.out.println("Teleop Started");
     	drive.start();
+    	trackCamera.start();
+    	targeting.start();
+    	
     }
 
     /**
@@ -86,14 +101,23 @@ public class Robot extends IterativeRobot {
 	    	//distance.update();
 	    	//System.out.println(distance.getDistance());
 	    	Scheduler.getInstance().run();
+	    	if(OI.testDown.get()){
+	    		RobotMap.testMotorOne.set(-.5);
+	    	}
+	    	else if(OI.testUp.get()){
+	    		RobotMap.testMotorOne.set(.5);
+	    	}
+	    	else{
+	    		RobotMap.testMotorOne.set(0);
+	    	}
 	    	if(print > 100){
 	    		
 	    		print = 0;
 	    	}
 	    	print++; 
-	    	
 	    	Timer.delay(0.005);
 	    }  
+	    
     }
     public void disabledInit(){
     	System.out.println("Disabled Started");
