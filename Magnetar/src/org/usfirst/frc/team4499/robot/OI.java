@@ -15,13 +15,24 @@ public class OI {
 	public static Joystick controllerOne = new Joystick(0);
 	public static JoystickButton shiftUp = new JoystickButton(controllerOne, 6);
 	public static JoystickButton shiftDown = new JoystickButton(controllerOne,5);
-	public static JoystickButton testUp = new JoystickButton(controllerOne,4);
-	public static JoystickButton testDown = new JoystickButton(controllerOne,2);
+	public static JoystickButton intake = new JoystickButton(controllerOne,8);
+	public static JoystickButton intakeOut = new JoystickButton(controllerOne,7);
+	public static JoystickButton intakeDown = new JoystickButton(controllerOne,3);
+	public static JoystickButton intakeUp = new JoystickButton(controllerOne,1);
+	public static JoystickButton Target = new JoystickButton(controllerOne,2 );
+	
+	
+	// Second person driving control
+	public static Joystick controllerTwo = new Joystick(1);
+	public static JoystickButton fire = new JoystickButton(controllerTwo,4);
+	public static JoystickButton load = new JoystickButton(controllerTwo,2);
+	public static JoystickButton prime = new JoystickButton(controllerTwo,1);
+	public static JoystickButton release = new JoystickButton(controllerTwo,3);
 	
 	
 	
 	// mapping of buttons for autonomous chooser
-	public static Joystick dial = new Joystick(1);
+	public static Joystick dial = new Joystick(2);
 	public static JoystickButton dialOne = new JoystickButton(dial,1);
 	public static JoystickButton dialTwo = new JoystickButton(dial,2);
 	public static JoystickButton dialThree = new JoystickButton(dial,3);

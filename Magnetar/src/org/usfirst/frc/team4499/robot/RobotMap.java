@@ -18,7 +18,7 @@ public class RobotMap {
   //  public static AHRS navx = new AHRS(SerialPort.Port.kMXP);
     
     //Solenoid for shifters
-    public static DoubleSolenoid shifters = new DoubleSolenoid(0,1);
+    
    // public static DoubleSolenoid piston = new DoubleSolenoid(2,3);
     
    // public static I2C lidar = new I2C(Port.kOnboard, 0x62);
@@ -29,10 +29,16 @@ public class RobotMap {
 	public static DCMotor motorRightOne = new DCMotor(3);
 	public static DCMotor motorRightTwo = new DCMotor(4);
 	
-	public static DCMotor testMotorOne = new DCMotor(5);
+	public static DCMotor intakeMotor = new DCMotor(5);
 	
 	public static Servo cameraYaw = new Servo(2); // for some reason pins 0, 1 won't work they crash the code
 	public static Servo cameraPitch = new Servo(3);
+	
+	public static DoubleSolenoid catapultLeft = new DoubleSolenoid(1,0,1);
+    public static DoubleSolenoid catapultRight = new DoubleSolenoid(1,2,3);
+    public static DoubleSolenoid catapultRelease = new DoubleSolenoid(0,2,3);
+    public static DoubleSolenoid intakePiston = new DoubleSolenoid(1,4,5);
+    public static DoubleSolenoid shifters = new DoubleSolenoid(0,0,1);
 	
 	
 	//Servo Motors for Camera Gimbal

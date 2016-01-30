@@ -20,8 +20,9 @@ public class Robot extends IterativeRobot {
 	Camera camera;
 	int print = 0;
 	Tegra tegra;
-	AutoTarget targeting;
-	AutoGimbal trackCamera;
+	Catapult catapult;
+	Intake intake;
+	Target autoTarget;
 	
 	
 	
@@ -38,8 +39,12 @@ public class Robot extends IterativeRobot {
 				RobotMap.motorRightOne,
 				RobotMap.shifters);
        // camera = new Camera(50, "cam0");
-        trackCamera = new AutoGimbal();
-        targeting = new AutoTarget(trackCamera);
+        catapult = new Catapult(
+    			RobotMap.catapultLeft,
+    			RobotMap.catapultRight, 
+    			RobotMap.catapultRelease);
+        intake = new Intake(RobotMap.intakePiston,RobotMap.intakeMotor);
+        autoTarget = new Target();
         try {
 			tegra = new Tegra();
 		} catch (IOException e) {
@@ -88,9 +93,9 @@ public class Robot extends IterativeRobot {
     public void teleopInit(){
     	System.out.println("Teleop Started");
     	drive.start();
-    	trackCamera.start();
-    	targeting.start();
-    	
+    	catapult.start();
+    	intake.start();
+    	autoTarget.start();
     }
 
     /**
@@ -101,21 +106,14 @@ public class Robot extends IterativeRobot {
 	    	//distance.update();
 	    	//System.out.println(distance.getDistance());
 	    	Scheduler.getInstance().run();
-	    	if(OI.testDown.get()){
-	    		RobotMap.testMotorOne.set(-.5);
-	    	}
-	    	else if(OI.testUp.get()){
-	    		RobotMap.testMotorOne.set(.5);
-	    	}
-	    	else{
-	    		RobotMap.testMotorOne.set(0);
-	    	}
 	    	if(print > 100){
 	    		
 	    		print = 0;
 	    	}
-	    	print++; 
+	    	print++;
+	    	
 	    	Timer.delay(0.005);
+	    	
 	    }  
 	    
     }
