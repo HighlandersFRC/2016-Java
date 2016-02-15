@@ -2,6 +2,8 @@ package org.usfirst.frc.team4499.robot;
 
 import org.usfirst.frc.team4499.robot.tools.DCMotor;
 
+import com.kauailabs.navx.frc.AHRS;
+
 //import com.kauailabs.navx.frc.AHRS;
 
 import edu.wpi.first.wpilibj.*;
@@ -15,7 +17,7 @@ import edu.wpi.first.wpilibj.I2C.Port;
  */
 public class RobotMap {
 	// On Board NavX
-  //  public static AHRS navx = new AHRS(SerialPort.Port.kMXP);
+    public static AHRS navx = new AHRS(SerialPort.Port.kMXP);
     
     //Solenoid for shifters
     
@@ -24,20 +26,19 @@ public class RobotMap {
    // public static I2C lidar = new I2C(Port.kOnboard, 0x62);
     
     //Drive Motors
-	public static DCMotor motorLeftOne = new DCMotor(1);
-	public static DCMotor motorLeftTwo = new DCMotor(2);
-	public static DCMotor motorRightOne = new DCMotor(3);
-	public static DCMotor motorRightTwo = new DCMotor(4);
+	public static DCMotor motorLeftOne = new DCMotor(1); //blue encoder
+	public static DCMotor motorLeftTwo = new DCMotor(2); //yellow
+	public static DCMotor motorRightOne = new DCMotor(3); //red
+	public static DCMotor motorRightTwo = new DCMotor(4);//green encoder
 	
 	public static DCMotor intakeMotor = new DCMotor(5);
 	
 	public static Servo cameraYaw = new Servo(2); // for some reason pins 0, 1 won't work they crash the code
 	public static Servo cameraPitch = new Servo(3);
 	
-	public static DoubleSolenoid catapultLeft = new DoubleSolenoid(1,0,1);
-    public static DoubleSolenoid catapultRight = new DoubleSolenoid(1,2,3);
-    public static DoubleSolenoid catapultRelease = new DoubleSolenoid(0,2,3);
-    public static DoubleSolenoid intakePiston = new DoubleSolenoid(1,4,5);
+	public static DoubleSolenoid catapult = new DoubleSolenoid(1,0,1);
+    public static DoubleSolenoid catapultRelease = new DoubleSolenoid(1,2,3);
+    public static DoubleSolenoid intakePiston = new DoubleSolenoid(0,6,7);
     public static DoubleSolenoid shifters = new DoubleSolenoid(0,0,1);
 	
 	

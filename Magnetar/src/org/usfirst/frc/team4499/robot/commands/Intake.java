@@ -13,7 +13,7 @@ import edu.wpi.first.wpilibj.command.Command;
 public class Intake extends Command {
 	private DoubleSolenoid intakePiston;
 	private DCMotor intakeWheels;
-	
+	private double power = .75;
 	private static Value off = DoubleSolenoid.Value.kOff;
 	private static Value forward = DoubleSolenoid.Value.kForward;
 	private static Value reverse = DoubleSolenoid.Value.kReverse;
@@ -36,10 +36,10 @@ public class Intake extends Command {
     		intakePiston.set(forward);
     	}
     	else if(OI.intake.get()){
-    		intakeWheels.set(.5);
+    		intakeWheels.set(power);
     	}
     	else if(OI.intakeOut.get()){
-    		intakeWheels.set(-.5);
+    		intakeWheels.set(-power);
     	}
     	else{
     		intakeWheels.set(0);

@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class Target extends Command {
+public class AutoTarget extends Command {
 	private double kp = .0085;
 	private double ki = 0;
 	private double kd = 0;
@@ -19,7 +19,7 @@ public class Target extends Command {
 	PID targetPosX;
 	
 	
-    public Target() {
+    public AutoTarget() {
     	targetPosX = new PID(kp,ki,kd);
     	
     }
@@ -31,7 +31,6 @@ public class Target extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if(OI.Target.get()){
     		if(Tegra.getX() > 0){
 		    	targetPosX.setSetPoint(320);
 		    	targetPosX.updatePID(Tegra.getX());
@@ -47,12 +46,11 @@ public class Target extends Command {
     		}else{
     			System.out.println("No Data From Tegra");
     		}
-    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false; 
+        return (Math.abs(320 - Tegra.getX()) < 10) && targetPosX.getResult() < .1; 
     }
 
     // Called once after isFinished returns true

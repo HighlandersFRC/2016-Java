@@ -4,49 +4,57 @@ import org.usfirst.frc.team4499.robot.OI;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
 public class Catapult extends Command {
-	private DoubleSolenoid rightPiston;
-	private DoubleSolenoid leftPiston;
+	private DoubleSolenoid catapult;
 	private DoubleSolenoid release;
+	private DoubleSolenoid intake;
 	
 	private static Value off = DoubleSolenoid.Value.kOff;
 	private static Value forward = DoubleSolenoid.Value.kForward;
 	private static Value reverse = DoubleSolenoid.Value.kReverse;
 	
-
-    public Catapult( DoubleSolenoid right, DoubleSolenoid left, DoubleSolenoid release) {
-        this.rightPiston = right;
-        this.leftPiston = left;
+	private AutoLoad load = new AutoLoad();
+	private Fire fire = new Fire();
+    public Catapult( DoubleSolenoid catapult, DoubleSolenoid release, DoubleSolenoid intake) {
+        this.catapult = catapult;
         this.release = release;
+        this.intake = intake;
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	rightPiston.set(off);
-    	leftPiston.set(off);
+    	catapult.set(off);
     	release.set(off);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	if(OI.load.get()){
-    		leftPiston.set(reverse);
-    		rightPiston.set(reverse);
+    		//catapult.set(reverse);
+    		//intake.set(forward);
+    		fire.cancel();
+    		load.start();
+    		
     	}
     	else if(OI.prime.get()){
-    		leftPiston.set(forward);
-    		rightPiston.set(forward);
+    		catapult.set(reverse);
+    		fire.cancel();
+    		load.cancel();
     	}
     	if(OI.fire.get()){
-    		release.set(reverse);
+    		fire.start();
+    		
     	}
     	else if(OI.release.get()){
     		release.set(reverse);
+    		fire.cancel();
+    		load.cancel();
     	}
     }
 
@@ -63,6 +71,7 @@ public class Catapult extends Command {
     // subsystems is scheduled to run
     protected void interrupted() {
     }
+
     
    
     

@@ -40,9 +40,7 @@ public class Robot extends IterativeRobot {
 				RobotMap.shifters);
        // camera = new Camera(50, "cam0");
         catapult = new Catapult(
-    			RobotMap.catapultLeft,
-    			RobotMap.catapultRight, 
-    			RobotMap.catapultRelease);
+    			RobotMap.catapult, RobotMap.catapultRelease, RobotMap.intakePiston);
         intake = new Intake(RobotMap.intakePiston,RobotMap.intakeMotor);
         autoTarget = new Target();
         try {
@@ -51,7 +49,7 @@ public class Robot extends IterativeRobot {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-        
+        RobotMap.navx.zeroYaw();
     }
     
     /**
@@ -60,24 +58,35 @@ public class Robot extends IterativeRobot {
     public void autonomousInit(){
     	System.out.println("Started Autonomous");
     	if(OI.dialOne.get()){
-    		System.out.println("Started Autonomous One");
+    		System.out.println("Started No Auto");
+    		// Do not add any code here
     	}
     	else if(OI.dialTwo.get()){
     		System.out.println("Started Autonomous Two");
-    	}
+    		DriveForward goForward = new DriveForward(100);
+    		goForward.start();
+    		}
     	else if(OI.dialThree.get()){
+    		//RobotMap.navx.zeroYaw();
     		System.out.println("Started Autonomous Three");
+    		Turn turn = new Turn(90,true);
+    		turn.start();
     	}
     	else if(OI.dialFour.get()){
     		System.out.println("Started Autonomous Four");
+    		D_Defense d_defense = new D_Defense();
+    		d_defense.start();
     	}
     	else if(OI.dialFive.get()){
     		System.out.println("Started Autonomous Five");
+    		AutoTarget target = new AutoTarget();
+    		target.start();
     	}
     	else{
     		// Do Nothing
     		// Default to No auto
     	}
+    	System.out.println("Autonomous Complete");
     }
 
     /**
@@ -111,7 +120,6 @@ public class Robot extends IterativeRobot {
 	    		print = 0;
 	    	}
 	    	print++;
-	    	
 	    	Timer.delay(0.005);
 	    	
 	    }  

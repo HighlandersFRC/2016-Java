@@ -37,8 +37,8 @@ public class TankDrive extends Command{
 	
 	@Override
 	protected void initialize() {
-		// TODO Auto-generated method stub
-		safety = 0.5;
+		// TODO Auto-
+		//generated method stub
 		pistonValue = DoubleSolenoid.Value.kOff;
 	}
 	@Override
@@ -53,11 +53,11 @@ public class TankDrive extends Command{
 	    	RobotMap.shifters.set(pistonValue);
     	}
 		
-    	RobotMap.motorLeftOne.set(OI.controllerOne.getRawAxis(1) * safety);
-    	RobotMap.motorLeftTwo.set(OI.controllerOne.getRawAxis(1) * safety);
+    	RobotMap.motorLeftOne.set(OI.controllerOne.getRawAxis(1));
+    	RobotMap.motorLeftTwo.set(OI.controllerOne.getRawAxis(1));
     	
-    	RobotMap.motorRightOne.set(-OI.controllerOne.getRawAxis(3)* safety);
-    	RobotMap.motorRightTwo.set(-OI.controllerOne.getRawAxis(3)* safety);
+    	RobotMap.motorRightOne.set(-OI.controllerOne.getRawAxis(3));
+    	RobotMap.motorRightTwo.set(-OI.controllerOne.getRawAxis(3));
 		
 	}
 
