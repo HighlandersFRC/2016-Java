@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>AccretionTest</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>org.eclipse.jdt.core.javabuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>org.eclipse.jdt.core.javanature</nature>
+		<nature>edu.wpi.first.wpilib.plugins.core.nature.FRCProjectNature</nature>
+	</natures>
+	<variableList>
+		<variable>
+			<name>FRCUserProgram</name>
+			<value>file:/C:/Users/NewUser/2016-Java/Magnetar/dist/FRCUserProgram.jar</value>
+		</variable>
+	</variableList>
+</projectDescription>
