@@ -20,13 +20,14 @@ public class Robot extends IterativeRobot {
 	Lidar distance;
 	GetPressure pressure;
 	
-	
+	int canSwitch = 0;
+	int canSwitch1 = 0;
 	
 	double supplyVoltage = 4.53; //default 5, VO was 1.54
 	
 	double returnPressure;
 	double returnVoltage;
-	int tail = 15;
+	int tail = 10;
 	double[] prevValues = new double[tail];
 	double[] prevVoltage = new double[tail];
 	
@@ -153,7 +154,11 @@ public class Robot extends IterativeRobot {
 	    	SmartDashboard.putNumber("SUM", sum);
 	    	SmartDashboard.putNumber("TAIL", tail);
 	    	SmartDashboard.putNumber("PSI", pressure);
+	    	
 	    	SmartDashboard.putNumber("PSI SMA", returnPressure);
+	    	SmartDashboard.putNumber("PSI SMA1", returnPressure);
+	    	SmartDashboard.putNumber("PSI SMA2", returnPressure);
+	    	
 	    	SmartDashboard.putNumber("Raw return", RobotMap.PressureSensor.getAverageVoltage());
 	    	
 	    	SmartDashboard.putNumber("Raw return SMA", returnVoltage);
@@ -164,12 +169,33 @@ public class Robot extends IterativeRobot {
 	    	print++; 
 	    	
 	    	if(OI.pistonIn.get()){
-	    		pistonValue = DoubleSolenoid.Value.kForward;
+	    		if(canSwitch == 0 || canSwitch == 1) {
+	    			pistonValue = DoubleSolenoid.Value.kForward;
+	    			canSwitch = 2;
+	    			canSwitch1 = 1;
+	    			//System.out.println("Assigned pistonValue to 'kForward'");
+	    		}
 	    	}
+	    	
+	    	
 	    	if(OI.pistonOut.get()){
+	    		if(canSwitch == 0 || canSwitch == 2){
 	    		pistonValue = DoubleSolenoid.Value.kReverse;
+	    		canSwitch = 1;
+	    		canSwitch1 = 2;
+	    		//System.out.println("Assigned pistonValue to 'kReverse'");
+	    		}
 	    	}
-	    	RobotMap.piston.set(pistonValue);
+	    	//RobotMap.piston.set(pistonValue);
+	    	if (canSwitch1 != canSwitch) {
+	    		RobotMap.piston.set(pistonValue);
+	    		SmartDashboard.putString("pistonValue", pistonValue.toString());
+	    		boolean isOut = (pistonValue.toString() == "kForward");
+	    		SmartDashboard.putBoolean("Piston position" , isOut);
+	    		canSwitch1 = canSwitch;
+	    	}
+	    	SmartDashboard.putString("Updating pistonValue", pistonValue.toString());
+	    	//System.out.println("Set 'RobotMap.shifters' to '"  + pistonValue + "'");
 	    	
 	    	distance.update();
 	    	System.out.println(distance.getDistance());

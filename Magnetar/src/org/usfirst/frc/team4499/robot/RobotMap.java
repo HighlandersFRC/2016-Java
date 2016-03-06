@@ -40,6 +40,8 @@ public class RobotMap {
     public static DoubleSolenoid catapultRelease = new DoubleSolenoid(1,2,3);
     public static DoubleSolenoid intakePiston = new DoubleSolenoid(0,6,7);
     public static DoubleSolenoid shifters = new DoubleSolenoid(0,0,1);
+    
+    public static AnalogInput PressureSensor = new AnalogInput(2);
 	
 	
 	//Servo Motors for Camera Gimbal
