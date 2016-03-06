@@ -1,0 +1,109 @@
+<xml version="1.0">
+<dashboard>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.Label">
+		<location x="359" y="336"/>
+		<width>69</width>
+		<property name="Text" value="Connected?"/>
+	</static-widget>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.Label">
+		<location x="296" y="289"/>
+		<width>33</width>
+		<property name="Text" value="60"/>
+	</static-widget>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.Label">
+		<location x="311" y="211"/>
+		<property name="Text" value="50"/>
+	</static-widget>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.Label">
+		<location x="253" y="152"/>
+		<property name="Text" value="40"/>
+	</static-widget>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.Label">
+		<location x="83" y="251"/>
+		<property name="Text" value="10"/>
+	</static-widget>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.Label">
+		<location x="105" y="179"/>
+		<property name="Text" value="20"/>
+	</static-widget>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.Label">
+		<location x="176" y="142"/>
+		<property name="Text" value="30"/>
+	</static-widget>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.Label">
+		<location x="111" y="321"/>
+		<property name="Text" value="0"/>
+	</static-widget>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.Label">
+		<location x="410" y="56"/>
+		<property name="Text" value="65 PSI"/>
+	</static-widget>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.Label">
+		<location x="7" y="56"/>
+		<property name="Text" value="0 PSI"/>
+	</static-widget>
+	<widget field="Piston position" type="Boolean" class="edu.wpi.first.smartdashboard.gui.elements.BooleanBox">
+		<location x="22" y="391"/>
+		<width>98</width>
+		<height>30</height>
+	</widget>
+	<widget field="PSI SMA" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.ProgressBar">
+		<location x="37" y="28"/>
+		<width>366</width>
+		<height>59</height>
+		<property name="Maximum" value="65.0"/>
+	</widget>
+	<widget field="PSI SMA1" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.SimpleDial">
+		<location x="59" y="157"/>
+		<width>296</width>
+		<height>192</height>
+		<property name="Upper Limit" value="65.0"/>
+		<property name="Tick Interval" value="5.0"/>
+	</widget>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.ConnectionIndicator">
+		<location x="362" y="353"/>
+		<width>62</width>
+		<height>57</height>
+	</static-widget>
+	<widget field="PSI SMA2" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="645" y="272"/>
+		<height>20</height>
+	</widget>
+	<widget field="earlySum" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="647" y="151"/>
+	</widget>
+	<widget field="Raw return SMA" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="613" y="248"/>
+	</widget>
+	<widget field="PSI" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="675" y="175"/>
+	</widget>
+	<widget field="Raw return" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="637" y="224"/>
+	</widget>
+	<widget field="TAIL" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="669" y="200"/>
+	</widget>
+	<widget field="PV2" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="675" y="103"/>
+		<height>20</height>
+	</widget>
+	<widget field="pistonValue" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="637" y="127"/>
+	</widget>
+	<widget field="PV0" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="675" y="54"/>
+	</widget>
+	<widget field="PV1" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="675" y="78"/>
+	</widget>
+	<widget field="Updating pistonValue" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="592" y="29"/>
+	</widget>
+	<widget field="SUM" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="672" y="5"/>
+	</widget>
+</dashboard>
+<live-window>
+</live-window>
+</xml>
