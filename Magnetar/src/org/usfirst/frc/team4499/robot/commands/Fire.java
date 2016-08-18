@@ -14,8 +14,9 @@ public class Fire extends CommandGroup {
 	private Value forward = DoubleSolenoid.Value.kForward;
 	private Value reverse = DoubleSolenoid.Value.kReverse;
     public  Fire() {
-    	addSequential(new PistonSet(RobotMap.catapult, reverse, 0));
-    	addSequential(new PistonSet(RobotMap.intakePiston,forward, .2));
-    	addSequential(new PistonSet(RobotMap.catapultRelease, forward, .1));
+    	addSequential(new PistonSet(RobotMap.intakePiston,RobotMap.intakeOut,0));
+    	addSequential(new PistonSet(RobotMap.catapult,RobotMap.catapultUp,.2));
+    	addSequential(new PistonSet(RobotMap.catapultRelease,RobotMap.latchOpen,.4));
+    	addSequential(new AutoLoad());
     }
 }

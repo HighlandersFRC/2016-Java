@@ -11,17 +11,20 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class Target extends Command {
-	private double kp = .0085;
+	private double kp = .01;
 	private double ki = 0;
 	private double kd = 0;
 
-	
+	private double kpY = 0.01;
+	private double kiY;
+	private double kdY;
 	PID targetPosX;
+	PID targetPosY;
 	
 	
     public Target() {
     	targetPosX = new PID(kp,ki,kd);
-    	
+    	targetPosY = new PID(kpY,kiY,kdY);
     }
 
     // Called just before this Command runs the first time
@@ -33,17 +36,34 @@ public class Target extends Command {
     protected void execute() {
     	if(OI.Target.get()){
     		if(Tegra.getX() > 0){
+    			RobotMap.intakePiston.set(RobotMap.intakeOut);
+    			Pinchers.setPoint = -500;
 		    	targetPosX.setSetPoint(320);
 		    	targetPosX.updatePID(Tegra.getX());
+		    	targetPosY.setSetPoint(180);
+		    	targetPosY.updatePID(Tegra.getY());
 		    	double power = targetPosX.getResult();
-		    	RobotMap.motorLeftOne.set(power);
-		    	RobotMap.motorRightOne.set(power);
-		    	RobotMap.motorLeftTwo.set(power);
-		    	RobotMap.motorRightTwo.set(power);
-		    	System.out.println(power);
-		    	if(Math.abs(320 - Tegra.getX()) < 10){
-		    		System.out.println(" \n Target Locked !! \n ");
+		    	if(power > 0.1){
+		    		power = 0.3;
 		    	}
+		    	else if(power < -0.1){
+		    		power = -0.3;
+		    	}
+		    	double yPower = targetPosY.getResult();
+		    	if(yPower > 0.1){
+		    		yPower = 0.3;
+		    	}
+		    	else if(yPower < -0.1){
+		    		yPower = -0.3;
+		    	}
+		    	RobotMap.motorLeftOne.set( power + yPower);
+		    	RobotMap.motorRightOne.set(power -yPower);
+		    	RobotMap.motorLeftTwo.set(power +yPower);
+		    	RobotMap.motorRightTwo.set(power - yPower);
+		    	//System.out.println(power);
+		    	//if(Math.abs(320 - Tegra.getX()) < 10){
+		    	//	System.out.println(" \n Target Locked !! \n ");
+		    	//}
     		}else{
     			System.out.println("No Data From Tegra");
     		}

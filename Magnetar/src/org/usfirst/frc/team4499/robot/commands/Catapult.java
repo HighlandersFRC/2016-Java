@@ -1,6 +1,7 @@
 package org.usfirst.frc.team4499.robot.commands;
 
 import org.usfirst.frc.team4499.robot.OI;
+import org.usfirst.frc.team4499.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
@@ -18,9 +19,11 @@ public class Catapult extends Command {
 	private static Value off = DoubleSolenoid.Value.kOff;
 	private static Value forward = DoubleSolenoid.Value.kForward;
 	private static Value reverse = DoubleSolenoid.Value.kReverse;
-	
-	private AutoLoad load = new AutoLoad();
 	private Fire fire = new Fire();
+	private double loadTime = 0;
+	private double loadWait = .5;
+	private boolean canLoad = true;
+	private boolean loaded = false;
     public Catapult( DoubleSolenoid catapult, DoubleSolenoid release, DoubleSolenoid intake) {
         this.catapult = catapult;
         this.release = release;
@@ -36,26 +39,15 @@ public class Catapult extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	if(OI.load.get()){
-    		//catapult.set(reverse);
-    		//intake.set(forward);
-    		fire.cancel();
+    		AutoLoad load = new AutoLoad();
     		load.start();
-    		
-    	}
-    	else if(OI.prime.get()){
-    		catapult.set(reverse);
-    		fire.cancel();
-    		load.cancel();
     	}
     	if(OI.fire.get()){
+    		Fire fire = new Fire();
     		fire.start();
     		
     	}
-    	else if(OI.release.get()){
-    		release.set(reverse);
-    		fire.cancel();
-    		load.cancel();
-    	}
+    	
     }
 
     // Make this return true when this Command no longer needs to run execute()

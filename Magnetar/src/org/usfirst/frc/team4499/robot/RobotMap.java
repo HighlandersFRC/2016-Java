@@ -7,6 +7,7 @@ import com.kauailabs.navx.frc.AHRS;
 //import com.kauailabs.navx.frc.AHRS;
 
 import edu.wpi.first.wpilibj.*;
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.I2C.Port;
 
 /**
@@ -16,14 +17,14 @@ import edu.wpi.first.wpilibj.I2C.Port;
  * floating around.
  */
 public class RobotMap {
+	private static DoubleSolenoid.Value off = DoubleSolenoid.Value.kOff;
+	private static DoubleSolenoid.Value forward = DoubleSolenoid.Value.kForward;
+	private static DoubleSolenoid.Value reverse = DoubleSolenoid.Value.kReverse;
+	
+	
+	
 	// On Board NavX
-    public static AHRS navx = new AHRS(SerialPort.Port.kMXP);
-    
-    //Solenoid for shifters
-    
-   // public static DoubleSolenoid piston = new DoubleSolenoid(2,3);
-    
-   // public static I2C lidar = new I2C(Port.kOnboard, 0x62);
+	public static AHRS navx = new AHRS(SerialPort.Port.kMXP);
     
     //Drive Motors
 	public static DCMotor motorLeftOne = new DCMotor(1); //blue encoder
@@ -31,35 +32,27 @@ public class RobotMap {
 	public static DCMotor motorRightOne = new DCMotor(3); //red
 	public static DCMotor motorRightTwo = new DCMotor(4);//green encoder
 	
-	public static DCMotor intakeMotor = new DCMotor(5);
+	//Non Drive Motors
+	public static DCMotor intakeMotor = new DCMotor(5); 
+	public static DCMotor pincherMotor = new DCMotor(6); //Purple
 	
-	public static Servo cameraYaw = new Servo(2); // for some reason pins 0, 1 won't work they crash the code
-	public static Servo cameraPitch = new Servo(3);
+    //uncomment for comp bot
+    //public static DoubleSolenoid intakePiston = new DoubleSolenoid(0,0,1);
+    //public static DoubleSolenoid shifters = new DoubleSolenoid(0,6,7);
+    public static DoubleSolenoid intakePiston = new DoubleSolenoid(0,0,1);
+    public static DoubleSolenoid shifters = new DoubleSolenoid(0,6,7);
+    public static DoubleSolenoid catapult = new DoubleSolenoid(1,0,1);
+    public static DoubleSolenoid catapultRelease = new DoubleSolenoid(1,4,5);
 	
-	public static DoubleSolenoid catapult = new DoubleSolenoid(1,0,1);
-    public static DoubleSolenoid catapultRelease = new DoubleSolenoid(1,2,3);
-    public static DoubleSolenoid intakePiston = new DoubleSolenoid(0,6,7);
-    public static DoubleSolenoid shifters = new DoubleSolenoid(0,0,1);
-    
-    public static AnalogInput PressureSensor = new AnalogInput(2);
+	public static AnalogInput PressureSensor = new AnalogInput(1);
 	
-	
-	//Servo Motors for Camera Gimbal
-	//public static Servo cameraYaw = new Servo(2); // for some reason pins 0, 1 won't work they crash the code
-	//public static Servo cameraPitch = new Servo(3);
-	
-
-	
-	
-	
-	
-    // For example to map the left and right motors, you could define the
-    // following variables to use with your drivetrain subsystem.
-    // public static int leftMotor = 1;
-    // public static int rightMotor = 2;
-    
-    // If you are using multiple modules, make sure to define both the port
-    // number and the module. For example you with a rangefinder:
-    // public static int rangefinderPort = 1;
-    // public static int rangefinderModule = 1;
+	//Piston Mappings (This is to make it easy to change which way pistons are going)
+	public static DoubleSolenoid.Value intakeIn = forward;
+	public static DoubleSolenoid.Value intakeOut = reverse;
+	public static DoubleSolenoid.Value catapultUp = forward;
+	public static DoubleSolenoid.Value catapultDown = reverse;
+	public static DoubleSolenoid.Value highGear = forward;
+	public static DoubleSolenoid.Value lowGear = reverse;
+	public static DoubleSolenoid.Value latchOpen = reverse;
+	public static DoubleSolenoid.Value latchClosed = forward;
 }

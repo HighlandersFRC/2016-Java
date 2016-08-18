@@ -10,14 +10,13 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
  *
  */
 public class AutoLoad extends CommandGroup {
-	private Value off = DoubleSolenoid.Value.kOff;
-	private Value forward = DoubleSolenoid.Value.kForward;
-	private Value reverse = DoubleSolenoid.Value.kReverse;
     public  AutoLoad() {
-    	addSequential(new PistonSet(RobotMap.catapultRelease, forward, 0));
-    	addSequential(new PistonSet(RobotMap.intakePiston,forward, .2));
-    	addSequential(new PistonSet(RobotMap.catapult, forward, .3));
-    	addSequential(new PistonSet(RobotMap.catapultRelease, reverse, .1));
+    	addSequential(new PistonSet(RobotMap.catapultRelease,RobotMap.latchOpen,.1));
+    	addSequential(new PistonSet(RobotMap.intakePiston,RobotMap.intakeOut,.2));
+    	addSequential(new PistonSet(RobotMap.catapult,RobotMap.catapultDown,2));
+    	addSequential(new PistonSet(RobotMap.catapultRelease,RobotMap.latchClosed,.2));
+    	addSequential(new PistonSet(RobotMap.catapult,RobotMap.catapultUp,2));
+    	
     	
     	
     	

@@ -13,7 +13,7 @@ public class NavXDriveForward extends Command {
 	private double speed;
 	private double time;
 	private double startAngle;
-	private double kp = 0.03;
+	private double kp = 0.025;
 	private double ki = 0.0001;
 	private double kd = 0;
 	private PID orientation; 
@@ -23,8 +23,11 @@ public class NavXDriveForward extends Command {
     	this.time = time;
     	this.speed = speed;
     	orientation = new PID(kp,ki,kd);
-    	orientation.setMaxOutput(.25);
-    	orientation.setMinOutput(-.25);
+    	//orientation.setMaxOutput(.25);
+    	//orientation.setMinOutput(-.25);
+    	orientation.setContinuous(true);
+    	orientation.setMaxInput(360);
+    	orientation.setMinInput(0);
     }
 
     // Called just before this Command runs the first time
@@ -34,8 +37,9 @@ public class NavXDriveForward extends Command {
     	startTime = Timer.getFPGATimestamp();
     }
 
-    // Called repeatedly when this Command is scheduled to run
+    // Csalled repeatedly when this Command is scheduled to run
     protected void execute() {
+    	
     	orientation.updatePID(RobotMap.navx.getAngle());
     	RobotMap.motorLeftOne.set(-orientation.getResult() - speed);
     	RobotMap.motorLeftTwo.set(-orientation.getResult() - speed);
@@ -43,13 +47,19 @@ public class NavXDriveForward extends Command {
     	RobotMap.motorRightOne.set(-orientation.getResult() + speed);
     	RobotMap.motorRightTwo.set(-orientation.getResult() + speed);
     	
-    	if(RobotMap.navx.getWorldLinearAccelZ() < -.25 &&!across){
-    		startTime = Timer.getFPGATimestamp();
-    		time = 2;
-    		across = true;
-    		//speed = .2;
+    	//RobotMap.motorLeftOne.set(- speed);
+    	//RobotMap.motorLeftTwo.set(- speed);
+    	
+    	//RobotMap.motorRightOne.set(speed);
+    	//RobotMap.motorRightTwo.set(speed);
+    	System.out.println("Orientation: " + RobotMap.navx.getAngle()+"Start Angle:"+ startAngle+ "Response:" +  orientation.getResult());
+    	//if(RobotMap.navx.getWorldLinearAccelZ() < -.5 &&!across){
+    	//	time = 2 + Timer.getFPGATimestamp();
+    	//	across = true;
+    	//	speed = .3;
 
-    	}
+    	//}/
+    	
     	//System.out.println(orientation.getResult());
     }
 
