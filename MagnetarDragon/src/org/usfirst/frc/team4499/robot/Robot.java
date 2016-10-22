@@ -10,6 +10,7 @@ import org.usfirst.frc.team4499.robot.commands.ExampleCommand;
 import org.usfirst.frc.team4499.robot.subsystems.ExampleSubsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import org.usfirst.frc.team4499.robot.commands.Wait;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -105,6 +106,7 @@ public class Robot extends IterativeRobot {
     	if (OI.wingbutton.get())
     	{
     			RobotMap.wings.set(DoubleSolenoid.Value.kForward);
+    			
     	}
     	else
     	{

@@ -8,6 +8,7 @@ public class Flap extends CommandGroup{
 
 	public Flap(){
 		addSequential(new PistonSet(RobotMap.wings,RobotMap.wingsDown,5));
+		addSequential(new Wait(0.5));
 		addSequential(new PistonSet(RobotMap.wings,RobotMap.wingsUp,5));
 	}
 	
