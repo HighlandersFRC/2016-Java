@@ -21,6 +21,7 @@ public class OI {
 	public static JoystickButton intakeUp = new JoystickButton(controllerOne,1);
 	public static JoystickButton pinchersDown = new JoystickButton(controllerOne,2);
 	public static JoystickButton pinchersUp = new JoystickButton(controllerOne,4);
+	public static JoystickButton fire = new JoystickButton(controllerOne,10);
 	
 	/*public static Joystick controllerOne = new Joystick(0);
 	public static JoystickButton shiftUp = new JoystickButton(controllerOne, 6);
@@ -36,7 +37,7 @@ public class OI {
 	
 	// Second person driving control
 	public static Joystick controllerTwo = new Joystick(1);
-	public static JoystickButton fire = new JoystickButton(controllerTwo,4);
+	//public static JoystickButton fire = new JoystickButton(controllerTwo,4);
 	public static JoystickButton load = new JoystickButton(controllerTwo,2);
 	public static JoystickButton Target = new JoystickButton(controllerTwo,5 );
 	public static JoystickButton pinchersDownTwo = new JoystickButton(controllerTwo,7 );

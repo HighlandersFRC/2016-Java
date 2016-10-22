@@ -1,3 +1,5 @@
-GitRepositoriesView.GitDirectories=C\:\\Users\\NewUser\\2016-Java\\.git;C\:\\Users\\NewUser\\git\\2016-Java\\.git;
-RepositorySearchDialogSearchPath=C\:\\Users\\NewUser\\git
+GitRepositoriesView.GitDirectories=C\:\\Users\\Highlander\\Documents\\Robotics\\2016-Java\\.git;
+GitRepositoriesView.GitDirectories.relative=.git;
+RepositorySearchDialogDeepSearch=true
+RepositorySearchDialogSearchPath=C\:\\Users\\Highlander\\Documents\\Robotics\\2016-Java
 eclipse.preferences.version=1

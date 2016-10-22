@@ -10,5 +10,7 @@
 	<classpathentry kind="lib" path="C:/Users/NewUser/wpilib/java/current/lib/WPILib-sources.jar"/>
 	<classpathentry kind="lib" path="C:/Users/NewUser/navx-mxp/java/lib/navx_frc.jar"/>
 	<classpathentry kind="var" path="JRE_LIB"/>
+	<classpathentry kind="lib" path="C:/Users/Highlander/wpilib/java/current/lib/WPILib.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Highlander/navx-mxp/java/lib/navx_frc.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

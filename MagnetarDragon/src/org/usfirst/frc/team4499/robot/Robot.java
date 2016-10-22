@@ -1,6 +1,7 @@
 
 package org.usfirst.frc.team4499.robot;
 
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -96,10 +97,19 @@ public class Robot extends IterativeRobot {
      * This function is called periodically during operator control
      */
     public void teleopPeriodic() {
-    	RobotMap.motorLeftOne.set(OI.controllerOne.getRawAxis(1));
-    	RobotMap.motorLeftTwo.set(OI.controllerOne.getRawAxis(1));
-    	RobotMap.motorRightOne.set(-OI.controllerOne.getRawAxis(3));
-    	RobotMap.motorRightTwo.set(-OI.controllerOne.getRawAxis(3));
+    	RobotMap.motorLeftOne.set(-OI.controllerOne.getRawAxis(3));
+    	RobotMap.motorLeftTwo.set(-OI.controllerOne.getRawAxis(3));
+    	RobotMap.motorRightOne.set(OI.controllerOne.getRawAxis(1));
+    	RobotMap.motorRightTwo.set(OI.controllerOne.getRawAxis(1));
+    	
+    	if (OI.wingbutton.get())
+    	{
+    			RobotMap.wings.set(DoubleSolenoid.Value.kForward);
+    	}
+    	else
+    	{
+    		RobotMap.wings.set(DoubleSolenoid.Value.kReverse);	
+    	}
     	
         Scheduler.getInstance().run();
     }
