@@ -10,6 +10,7 @@ import org.usfirst.frc.team4499.robot.commands.ExampleCommand;
 import org.usfirst.frc.team4499.robot.subsystems.ExampleSubsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import org.usfirst.frc.team4499.robot.RobotMap;
 import org.usfirst.frc.team4499.robot.commands.Wait;
 
 
@@ -117,12 +118,19 @@ public class Robot extends IterativeRobot {
     	if (OI.wingbutton.get())
     	{
     			RobotMap.wings.set(DoubleSolenoid.Value.kForward);
-    			
     	}
     	else
     	{
     		RobotMap.wings.set(DoubleSolenoid.Value.kReverse);	
     	}
+    	
+    	//Test to see if encoders return values
+    	/*
+    	System.out.println("Left One " + RobotMap.motorLeftOne.getEncPosition());
+    	System.out.println("Left Two " + RobotMap.motorLeftTwo.getEncPosition());
+    	System.out.println("Right One " + RobotMap.motorRightOne.getEncPosition());
+    	System.out.println("Right Two " + RobotMap.motorRightTwo.getEncPosition());
+    	*/
     	
         Scheduler.getInstance().run();
     }
