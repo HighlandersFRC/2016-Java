@@ -12,6 +12,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team4499.robot.commands.Wait;
 
+
+
 /**
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the IterativeRobot
@@ -23,6 +25,7 @@ public class Robot extends IterativeRobot {
 
 	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
 	public static OI oi;
+	public static boolean newController = false;
 
     Command autonomousCommand;
     SendableChooser chooser;
@@ -98,10 +101,18 @@ public class Robot extends IterativeRobot {
      * This function is called periodically during operator control
      */
     public void teleopPeriodic() {
-    	RobotMap.motorLeftOne.set(-OI.controllerOne.getRawAxis(3));
-    	RobotMap.motorLeftTwo.set(-OI.controllerOne.getRawAxis(3));
-    	RobotMap.motorRightOne.set(OI.controllerOne.getRawAxis(1));
-    	RobotMap.motorRightTwo.set(OI.controllerOne.getRawAxis(1));
+    	
+    	if (newController == false) {
+    		RobotMap.motorLeftOne.set(-OI.controllerOne.getRawAxis(3));
+    		RobotMap.motorLeftTwo.set(-OI.controllerOne.getRawAxis(3));
+    		RobotMap.motorRightOne.set(OI.controllerOne.getRawAxis(1));
+    		RobotMap.motorRightTwo.set(OI.controllerOne.getRawAxis(1));
+    	} else {
+    		RobotMap.motorLeftOne.set(-OI.controllerOne.getRawAxis(5));
+        	RobotMap.motorLeftTwo.set(-OI.controllerOne.getRawAxis(5));
+        	RobotMap.motorRightOne.set(OI.controllerOne.getRawAxis(1));
+        	RobotMap.motorRightTwo.set(OI.controllerOne.getRawAxis(1));
+    	}
     	
     	if (OI.wingbutton.get())
     	{
