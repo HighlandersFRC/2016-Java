@@ -12,6 +12,9 @@ import org.usfirst.frc.team4499.robot.commands.ExampleCommand;
  */
 public class OI {
 	// mapping of buttons for first Controller
+	
+	// "Old" Logitech controller
+	/*
 	public static Joystick controllerOne = new Joystick(0);
 	public static JoystickButton shiftUp = new JoystickButton(controllerOne, 6);
 	public static JoystickButton lockDrive = new JoystickButton(controllerOne,5);
@@ -23,18 +26,6 @@ public class OI {
 	public static JoystickButton pinchersUp = new JoystickButton(controllerOne,4);
 	public static JoystickButton fire = new JoystickButton(controllerOne,10);
 	
-	/*public static Joystick controllerOne = new Joystick(0);
-	public static JoystickButton shiftUp = new JoystickButton(controllerOne, 6);
-	public static JoystickButton shiftDown = new JoystickButton(controllerOne,5);
-	public static JoystickButton intake = new JoystickButton(controllerOne,8);
-	public static JoystickButton intakeOut = new JoystickButton(controllerOne,7);
-	public static JoystickButton intakeDown = new JoystickButton(controllerOne,2);
-	public static JoystickButton intakeUp = new JoystickButton(controllerOne,3);
-	public static JoystickButton pinchersDown = new JoystickButton(controllerOne,1);
-	public static JoystickButton pinchersUp = new JoystickButton(controllerOne,4);
-	*/
-	
-	
 	// Second person driving control
 	public static Joystick controllerTwo = new Joystick(1);
 	//public static JoystickButton fire = new JoystickButton(controllerTwo,4);
@@ -43,8 +34,6 @@ public class OI {
 	public static JoystickButton pinchersDownTwo = new JoystickButton(controllerTwo,7 );
 	public static JoystickButton pinchersUpTwo = new JoystickButton(controllerTwo,8 );
 	public static JoystickButton duck = new JoystickButton(controllerTwo,6);
-	
-	
 	
 	// mapping of buttons for autonomous chooser
 	public static Joystick dial = new Joystick(2);
@@ -56,6 +45,42 @@ public class OI {
 	public static JoystickButton switchOne = new JoystickButton(dial, 6);
 	public static JoystickButton switchTwo = new JoystickButton(dial, 7);
 	public static JoystickButton switchThree = new JoystickButton(dial, 8);
+	*/
+	
+	// New Xbox One Controller
+	
+	public static Joystick controllerOne = new Joystick(0);
+	public static JoystickButton shiftUp = new JoystickButton(controllerOne, 6);
+	public static JoystickButton lockDrive = new JoystickButton(controllerOne,5);
+	//public static JoystickButton intake = new JoystickButton(controllerOne,8);
+	//public static JoystickButton intakeOut = new JoystickButton(controllerOne,7);
+	public static JoystickButton intakeDown = new JoystickButton(controllerOne,2);
+	public static JoystickButton intakeUp = new JoystickButton(controllerOne,3);
+	public static JoystickButton pinchersDown = new JoystickButton(controllerOne,1);
+	public static JoystickButton pinchersUp = new JoystickButton(controllerOne,4);
+	public static JoystickButton fire = new JoystickButton(controllerOne,8);
+	
+	// Second person driving control
+	public static Joystick controllerTwo = new Joystick(1);
+	//public static JoystickButton fire = new JoystickButton(controllerTwo,4);
+	public static JoystickButton load = new JoystickButton(controllerTwo,1);
+	public static JoystickButton Target = new JoystickButton(controllerTwo,5 );
+	//public static JoystickButton pinchersDownTwo = new JoystickButton(controllerTwo,7 );
+	//public static JoystickButton pinchersUpTwo = new JoystickButton(controllerTwo,8 );
+	public static JoystickButton duck = new JoystickButton(controllerTwo,6);
+	
+	// mapping of buttons for autonomous chooser
+	public static Joystick dial = new Joystick(2);
+	public static JoystickButton dialOne = new JoystickButton(dial,1);
+	public static JoystickButton dialTwo = new JoystickButton(dial,2);
+	public static JoystickButton dialThree = new JoystickButton(dial,3);
+	public static JoystickButton dialFour = new JoystickButton(dial,4);
+	public static JoystickButton dialFive = new JoystickButton(dial,5);
+	public static JoystickButton switchOne = new JoystickButton(dial, 6);
+	public static JoystickButton switchTwo = new JoystickButton(dial, 7);
+	public static JoystickButton switchThree = new JoystickButton(dial, 8);
+	
+	
 	
 	
 	
